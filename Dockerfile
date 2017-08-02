@@ -42,11 +42,6 @@ RUN useradd -m -d /home/wordpress -p $(openssl passwd -1 'wordpress') -G root -s
     && usermod -a -G sudo wordpress \
     && ln -s /usr/share/nginx/www /home/wordpress/www
 
-RUN mkdir /usr/share/nginx \
-    && mkdir /usr/share/nginx/www \
-	&& chown -R wordpress:www-data /usr/share/nginx/www \
-    && chmod -R 775 /usr/share/nginx/www
-
 # Wordpress Initialization and Startup Script
 ADD ./start.sh /start.sh
 RUN chmod 755 /start.sh
